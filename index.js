@@ -4,7 +4,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true})
 
 renderer.setSize( window.innerWidth, window.innerHeight )
 // sets renderer background color
-renderer.setClearColor("#222222")
+renderer.setClearColor("#b5b5b5")
 document.body.appendChild( renderer.domElement )
 camera.position.z = 5
 
@@ -18,15 +18,15 @@ window.addEventListener( 'resize', () => {
 })
 
 // basic cube
-var geometry = new THREE.BoxGeometry( 2, 2, 2)
-var material = new THREE.MeshStandardMaterial( { color: 0xff0051, flatShading: true, metalness: .8, roughness: 1 })
-var cube = new THREE.Mesh ( geometry, material )
-scene.add( cube )
+var geometry = new THREE.SphereGeometry( 1, 15, 15)
+var material = new THREE.MeshStandardMaterial( { color: 0xff005165cdc2, flatShading: true, metalness: .8, roughness: 1 })
+var sphere = new THREE.Mesh ( geometry, material )
+scene.add( sphere )
 
 // wireframe cube
 var geometry = new THREE.BoxGeometry( 3, 3, 3)
 var material = new THREE.MeshBasicMaterial( {
-	color: "#dadada", wireframe: true, transparent: true
+	color: "#", wireframe: true, transparent: true
 })
 var wireframeCube = new THREE.Mesh ( geometry, material )
 scene.add( wireframeCube )
@@ -43,8 +43,8 @@ scene.add( pointLight );
 
 function animate() {
 	requestAnimationFrame( animate )
-	cube.rotation.x += 0.04;
-	cube.rotation.y += 0.04;
+	sphere.rotation.x += 0.04;
+	sphere.rotation.y += 0.04;
 	wireframeCube.rotation.x -= 0.01;
 	wireframeCube.rotation.y -= 0.01;
 	renderer.render( scene, camera )
