@@ -17,19 +17,19 @@ window.addEventListener( 'resize', () => {
 	camera.updateProjectionMatrix()
 })
 
-// basic cube
+// basic sphere
 var geometry = new THREE.SphereGeometry( 1, 15, 15)
 var material = new THREE.MeshStandardMaterial( { color: 0xff005165cdc2, flatShading: true, metalness: .8, roughness: 1 })
 var sphere = new THREE.Mesh ( geometry, material )
 scene.add( sphere )
 
 // wireframe cube
-var geometry = new THREE.BoxGeometry( 3, 3, 3)
+var geometry = new THREE.CylinderGeometry( 2, 2, 5)
 var material = new THREE.MeshBasicMaterial( {
 	color: "#", wireframe: true, transparent: true
 })
-var wireframeCube = new THREE.Mesh ( geometry, material )
-scene.add( wireframeCube )
+var wireframeCylinder = new THREE.Mesh ( geometry, material )
+scene.add( wireframeCylinder )
 
 // ambient light
 var ambientLight = new THREE.AmbientLight ( 0xffffff, 0.2)
@@ -45,8 +45,8 @@ function animate() {
 	requestAnimationFrame( animate )
 	sphere.rotation.x += 0.04;
 	sphere.rotation.y += 0.04;
-	wireframeCube.rotation.x -= 0.01;
-	wireframeCube.rotation.y -= 0.01;
+	wireframeCylinder.rotation.x -= 0.01;
+	wireframeCylinder.rotation.y -= 0.01;
 	renderer.render( scene, camera )
 }
 animate()
